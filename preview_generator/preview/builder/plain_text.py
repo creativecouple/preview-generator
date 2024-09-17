@@ -18,6 +18,8 @@ class PlainTextPreviewBuilder(OfficePreviewBuilderLibreoffice):
             "text/plain",
             "text/html",
             "text/xml",  # Info - B.L - Compatibility between debian and ubuntu
+            "text/markdown",
+            "text/prs.fallenstein.rst",
             "application/xml",
             "application/javascript",
         ]
