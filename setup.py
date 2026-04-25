@@ -39,6 +39,7 @@ install_requires = [
     # commons
     "pyexifinfo",
     "filelock",
+    "img2pdf",
 ]
 
 tests_require = ["pytest", "pytest-dotenv", "ImageHash"]

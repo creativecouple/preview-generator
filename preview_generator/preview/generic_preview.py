@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from abc import ABC
+import img2pdf
 import json
 import logging
 import typing
@@ -196,3 +197,21 @@ class ImagePreviewBuilder(OnePagePreviewBuilder, ABC):
 
     def has_jpeg_preview(self) -> bool:
         return True
+
+    def has_pdf_preview(self) -> bool:
+        return True
+
+    def build_pdf_preview(
+        self,
+        file_path: str,
+        preview_name: str,
+        cache_path: str,
+        extension: str = ".pdf",
+        page_id: int = -1,
+        mimetype: str = "",
+    ) -> None:
+        """
+        generate pdf preview, just use img2pdf
+        """
+        with open(cache_path + preview_name + extension, "wb") as pdffile:
+            pdffile.write(img2pdf.convert([file_path]))
