@@ -213,5 +213,6 @@ class ImagePreviewBuilder(OnePagePreviewBuilder, ABC):
         """
         generate pdf preview, just use img2pdf
         """
+        pdf_content = img2pdf.convert([file_path], rotation=img2pdf.Rotation.ifvalid)
         with open(cache_path + preview_name + extension, "wb") as pdffile:
-            pdffile.write(img2pdf.convert([file_path]))
+            pdffile.write(pdf_content)
