@@ -9,14 +9,17 @@ from preview_generator.utils import ImgDims
 from preview_generator.utils import MimetypeMapping
 
 
-class ImagePreviewBuilderSketch(PreviewBuilder):
-    SKETCHUP_MIMETYPES_MAPPING = [MimetypeMapping("application/sketchup-backup", ".skb"),
-                                  MimetypeMapping("application/sketchup-project", ".skp")                                  ]
-    weight = 130
+class ImagePreviewBuilderProprietary(PreviewBuilder):
+    PROPRIETARY_3D_MIMETYPES_MAPPING = [
+        MimetypeMapping("application/home-designer", ".cyp"),
+        MimetypeMapping("application/sketchup-backup", ".skb"),
+        MimetypeMapping("application/sketchup-project", ".skp")
+    ]
+    weight = 131
 
     @classmethod
     def get_label(cls) -> str:
-        return "Images generator from sketchup files"
+        return "Images generator from proprietary 3D files"
 
     @classmethod
     def get_supported_mimetypes(cls) -> typing.List[str]:
@@ -27,7 +30,7 @@ class ImagePreviewBuilderSketch(PreviewBuilder):
 
     @classmethod
     def get_mimetypes_mapping(cls) -> typing.List[MimetypeMapping]:
-        return cls.SKETCHUP_MIMETYPES_MAPPING
+        return cls.PROPRIETARY_3D_MIMETYPES_MAPPING
 
     def build_jpeg_preview(
         self,
